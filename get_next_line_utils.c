@@ -6,30 +6,11 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 13:41:24 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/01/06 17:45:38 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/01/06 20:41:54 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	ft_bufcpy(char *buf)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (buf[i] && buf[i] != '\n')
-		++i;
-	++i;
-	j = 0;
-	while (buf[i])
-	{
-		buf[j] = buf[i];
-		++i;
-		++j;
-	}
-	buf[j] = 0;
-}
 
 char	*ft_strndup(const char *s1, size_t n)
 {
@@ -66,55 +47,30 @@ t_list	*ft_lstnew(void *content)
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*tmp;
-
-	if (*lst)
+	if (*lst != NULL && del != NULL)
 	{
-		while ((*lst)->next)
-		{
-			tmp = *lst;
-			*lst = (*lst)->next;
-			ft_lstdelone(tmp, del);
-		}
+		ft_lstclear(&(*lst)->next, del);
 		(*del)((*lst)->content);
 		free(*lst);
 		*lst = NULL;
 	}
 }
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*mem;
-	size_t i;
-
-	if (!(mem = (char *)malloc(count * size)))
-		return (0);
-	i = 0;
-	while (i < count * size)
-	{
-		((unsigned char *)mem)[i] = 0;
-		++i;
-	}
-	return ((void *)mem);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
-
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
+	t_list	*tmp;
+
+	tmp = *alst;
 	if (alst)
 	{
 		if (*alst == NULL)
 			*alst = new;
 		else
-			ft_lstlast(*alst)->next = new;
+		{
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			tmp->next = new;
+		}
 	}
 }
 

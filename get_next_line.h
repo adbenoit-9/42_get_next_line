@@ -6,7 +6,7 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 14:17:42 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/01/06 17:43:49 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/01/06 20:31:12 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-
-# define BUFFER_SIZE 4097
 
 typedef struct	s_list
 {
@@ -32,13 +30,10 @@ typedef struct	s_gnl
 }				t_gnl;
 
 int				get_next_line(int fd, char **line);
-void			ft_bufcpy(char *buf);
 char			*ft_strndup(const char *s1, size_t n);
 t_list			*ft_lstnew(void *content);
 void			ft_lstclear(t_list **lst, void (*del)(void *));
-void			*ft_calloc(size_t count, size_t size);
 void			ft_lstadd_back(t_list **alst, t_list *new);
 char			*ft_strcat(char *dest, const char *src);
-t_list			*ft_lstlast(t_list *lst);
 
 #endif
