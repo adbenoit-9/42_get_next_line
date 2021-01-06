@@ -6,14 +6,11 @@
 /*   By: adbenoit <adbenoit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:09:02 by adbenoit          #+#    #+#             */
-/*   Updated: 2021/01/06 22:09:26 by adbenoit         ###   ########.fr       */
+/*   Updated: 2021/01/06 22:20:18 by adbenoit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
 int	main(int ac, char **av)
 {
