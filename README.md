@@ -1,6 +1,6 @@
 # GET_NEXT_LINE
 
-"Reading a line on a fd is way too tedious"
+*"Reading a line on a fd is way too tedious"*
 
 ## Objective
 
